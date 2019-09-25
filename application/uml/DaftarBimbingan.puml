@@ -1,0 +1,24 @@
+@startuml
+
+actor Administrator
+boundary penjamin
+boundary formpembimbing
+control PenjaminController
+entity Model_Penjamin
+
+Administrator-> penjamin:Klik menu penjamin
+ penjamin->PenjaminController : index()
+PenjaminController-> penjamin : redirect()
+ penjamin ->Administrator : redirect()
+Administrator -> penjamin: klik aksi Pilih pembimbing
+ penjamin -> PenjaminController : pembimbing(id)
+PenjaminController -> formpembimbing : redirect()
+formpembimbing->Administrator:redirect()
+Administrator -> formpembimbing : select pembimbing
+formpembimbing -> PenjaminController : pembimbing(id)
+PenjaminController -> Model_Penjamin : edit(id_pembimbing,id_penjamin)
+Model_Penjamin -> PenjaminController : redirect()
+
+PenjaminController ->  penjamin : redirect()
+ penjamin->Administrator : redirect()
+@enduml

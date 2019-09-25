@@ -1,0 +1,18 @@
+@startuml
+
+actor PembimbingKemasyarakatan
+boundary persetujuanpenjamin
+control BimbinganController
+control PenjaminController
+entity Model_Penjamin
+PembimbingKemasyarakatan->persetujuanpenjamin:Klik menu persetujuan penjamin
+persetujuanpenjamin->BimbinganController : listbimbingan(id)
+BimbinganController->persetujuanpenjamin : redirect()
+persetujuanpenjamin ->PembimbingKemasyarakatan : redirect()
+PembimbingKemasyarakatan ->persetujuanpenjamin: klik aksi disposisi
+persetujuanpenjamin -> PenjaminController : disposisipenjamin(id)
+PenjaminController -> Model_Penjamin : edit(status,id)
+Model_Penjamin -> PenjaminController : redirect()
+PenjaminController -> persetujuanpenjamin : redirect()
+persetujuanpenjamin->PembimbingKemasyarakatan : redirect()
+@enduml

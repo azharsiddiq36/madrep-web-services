@@ -1,0 +1,19 @@
+@startuml
+
+actor Administrator
+boundary penjamin
+boundary formpenjamin
+control PenjaminController
+entity Model_Penjamin
+Administrator->penjamin:Klik menu surat lapas
+penjamin->PenjaminController : index()
+PenjaminController->penjamin : redirect()
+penjamin ->Administrator : redirect()
+Administrator->formpenjamin : isi form
+formpenjamin->PenjaminController : post()
+PenjaminController->Model_Penjamin : add_penjamin()
+Model_Penjamin->PenjaminController : redirect()
+PenjaminController->penjamin : redirect()
+penjamin->Administrator:redirect()
+
+@enduml

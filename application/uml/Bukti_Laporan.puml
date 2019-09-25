@@ -1,0 +1,25 @@
+@startuml
+
+actor PembimbingKemasyarakatan
+boundary Bimbingan
+boundary RiwayatBimbingan
+control BimbinganController
+
+entity Model_Bimbingan
+PembimbingKemasyarakatan->Bimbingan:Klik Menu Bimbingan
+Bimbingan->BimbinganController : bimbingan(id_pembimbing)
+BimbinganController->Bimbingan : redirect()
+Bimbingan->PembimbingKemasyarakatan : redirect()
+PembimbingKemasyarakatan->Bimbingan : Pilih Aksi
+Bimbingan->BimbinganController : getNapi(id_napi)
+BimbinganController->Model_Bimbingan : getByPenjamin(id_penjamin)
+Model_Bimbingan->BimbinganController :redirect()
+BimbinganController -> RiwayatBimbingan : redirect()
+RiwayatBimbingan ->PembimbingKemasyarakatan : redirect()
+PembimbingKemasyarakatan -> RiwayatBimbingan : print()
+RiwayatBimbingan -> BimbinganController : cetak_riwayat (id_napi)
+BimbinganController -> Model_Bimbingan : getByNapi(id_napi)
+Model_Bimbingan -> BimbinganController : redirect()
+BimbinganController -> Bimbingan : redirect()
+Bimbingan ->PembimbingKemasyarakatan : redirect()
+@enduml

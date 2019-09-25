@@ -1,0 +1,106 @@
+@startuml
+skinparam classAttributeIconSize 0
+Pegawai "1"--"1..*" Penjamin :mengelola
+Pegawai "1"--"1..*" Napi :mengelola
+Penjamin "1"*-"1" Napi : memerlukan
+Pegawai "1"-"1..*" Bimbingan : Menentukan
+Pengguna "1"-"1" Pegawai : Memiliki
+class Pengguna{
+-idpengguna
+-username
+-idpegawai
+-password
+-email
+-hak_akses
+  index()
+  post()
+  edit()
+  delete()
+  disposisi()
+  pembimbing()
+}
+class Penjamin{
+-idpenjamin
+-nokk
+-nama
+-noktp
+-id_pembimbing
+-id_napi
+-tgl_lahir
+-alamat
+-pekerjaan
+-fotokk
+-fotoktp
+-fotosurat
+-status
+  index()
+  post()
+  edit()
+  delete()
+  disposisi()
+  pembimbing()
+}
+class Pegawai{
+-id_pegawai
+-nama
+-nip
+-pangkat
+-tmtpangkat
+-jabatan
+-pendidikan
+-diklat
+-tmtdiklat
+-tahundiklat
+-tingkatijazah
+-tgllahir
+-kgb
+  index()
+  post()
+  edit()
+  delete()
+}
+class Napi{
+-idnapi
+-nama
+-noktp
+-fotoktp
+-tempatlahir
+-tgllahir
+-jeniskelamin
+-agama
+-kebangsaan
+-suku
+-pendidikan
+-pekerjaan
+-warnakulit
+-tinggi
+-alamat
+-tglmasuk
+-perkara
+-hukuman
+-keterangan
+  index()
+  post()
+  edit()
+  delete()
+  surat_pengantar()
+  detailNapiAjx()
+  keteranganNapi()
+}
+class Bimbingan{
+-idbimbingan
+-idpenjamin
+-idnapi
+-tanggal
+-idpegawai
+-keterangan
+  index()
+  post()
+  edit()
+  delete()
+  persetujuanpembimbing()
+  laporan()
+}
+
+
+@enduml

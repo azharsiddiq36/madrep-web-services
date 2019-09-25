@@ -1,0 +1,19 @@
+@startuml
+
+actor PembimbingKemasyarakatan
+boundary laporan
+control BimbinganController
+entity Model_Napi
+
+
+PembimbingKemasyarakatan->laporan:Klik Cetak Surat
+laporan->BimbinganController : bukti_laporan()
+BimbinganController->laporan : redirect()
+laporan->PembimbingKemasyarakatan : redirect()
+PembimbingKemasyarakatan->laporan : Pilih Aksi
+laporan->BimbinganController : getNapi(id_napi)
+BimbinganController->Model_Napi : get_one(id)
+Model_Napi->BimbinganController :redirect()
+BimbinganController -> laporan : redirect()
+laporan ->PembimbingKemasyarakatan : redirect()
+@enduml
